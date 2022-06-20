@@ -1,0 +1,75 @@
+<div class="modal-dialog modal-dialog-centered modal-lg">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="loginModalLabel">Edit User</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="editForm" (ngSubmit)="(editFormSubmit)" class="row g-3">
+        <div class="col-md-6">
+          <label for="id_email" class="form-label">Email address</label>
+          <input formControlName="email" [class.is-invalid]="email.touched && email.invalid" type="email"
+            class="form-control" id="id_email" />
+          <div *ngIf="email.invalid && email.touched">
+            <div *ngIf="email.errors?.required" class="d-block invalid-feedback">
+              Please provide a Email.
+            </div>
+            <div *ngIf="email.errors?.email" class="d-block invalid-feedback">
+              Email address is not valid
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="id_number" class="form-label">Mobile Number</label>
+          <input formControlName="number" [class.is-invalid]="number.touched && number.invalid" type="number"
+            class="form-control" id="id_number" />
+          <div *ngIf="number.touched && number.errors?.required" class="d-block invalid-feedback">
+            Provide your mobile number.
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="id_name" class="form-label"> Name</label>
+          <input formControlName="name" type="text" class="form-control" id="id_name" required />
+          <div *ngIf="name.touched && name.errors?.required" class="d-block invalid-feedback">
+            Provide your name.
+          </div>
+        </div>
+
+        <div class="col-md-6">
+
+
+          <label for="id_employee" class="form-label"> Employed?</label>
+          <select class="select col-md-10 form-control" formControlName="employee"
+            [class.is-invalid]="employee.touched && employee.invalid" class="form-control" id="id_employee">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+          <div *ngIf="employee.touched && employee.errors?.required" class="d-block invalid-feedback">
+            Required
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="id_gender" class="form-label"> Gender :-</label>
+          <div class="custom-control custom-radio form-check-inline" *ngFor="let item of genderList">
+            <label [for]="item" class="custom-control-label p-1">{{ item }}</label>
+
+            <input type="radio" [value]="item" [id]="item" class="custom-control-input" formControlName="gender" />
+          </div>
+          <div *ngIf="gender.touched && gender.errors?.required" class="d-block invalid-feedback">
+            Provide your gender.
+          </div>
+        </div>
+
+        <div class="col-md-6 mt-4">
+          <button [disabled]="editForm.invalid" type="submit" class="btn btn-primary px-5"
+            (click)="editFormSubmit()">
+            Submit
+          </button>
+          <button type="button" class="btn btn-secondary px-3 ms-2">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

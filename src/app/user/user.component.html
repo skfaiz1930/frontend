@@ -1,0 +1,27 @@
+<h4 class="fs-3 m-10">Users</h4>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Number</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Employed</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let singleUser of user">
+      <td>{{singleUser.name}}</td>
+      <td>{{singleUser.email}}</td>
+      <td>{{singleUser.number}}</td>
+      <td>{{singleUser.gender}}</td>
+      <td>{{singleUser.employee}}</td>
+      <td><img src="../../assets/edit-svgrepo-com.svg" class="img" [routerLink]="['/edit-user/', singleUser._id]">
+      </td>
+      <td><img src="../../assets/delete-svgrepo-com.svg" class="img" (click)="deleteUser(singleUser._id)"></td>
+    </tr>
+
+  </tbody>
+</table>

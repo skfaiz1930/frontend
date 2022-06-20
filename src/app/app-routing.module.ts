@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EditUserComponent } from './edit-user/edit-user.component';
 const routes: Routes = [
-  { path: '', component: EditUserComponent },
   { path: 'edit-user/:id', component: EditUserComponent },
 ];
 
@@ -11,3 +10,4 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
+

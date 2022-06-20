@@ -13,6 +13,10 @@ export class UserServicesService {
     return this.http.post(`${this.serverUrl}/register`, data);
   }
 
+  getUser(id: string) {
+    return this.http.get(`${this.serverUrl}/get-user/${id}`);
+  }
+
   getUsers() {
     return this.http.get(`${this.serverUrl}/get-users`).subscribe(
       (res: any) => {
@@ -23,14 +27,9 @@ export class UserServicesService {
   }
 
   editUser(data: any) {
+    console.log(data);
     this.userId = data._id;
-    return this.http.put(`${this.serverUrl}/edit/${data._id}`, data).subscribe(
-      (res) => {
-        console.log(res);
-        this.getUsers();
-      },
-      (err) => console.log(err)
-    );
+    return this.http.put(`${this.serverUrl}/edit/${data._id}`, data);
   }
 
   deleteUser = (id: string) => {

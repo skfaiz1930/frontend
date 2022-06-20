@@ -18,11 +18,6 @@ export class UserComponent implements OnInit {
   ngDoCheck() {
     this.user = this.userService.user;
   }
-
-  editUser(data: any) {
-    this.userService.editUser(data);
-  }
-
   deleteUser(id: string) {
     this.userService.deleteUser(id);
   }
